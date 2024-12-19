@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Прогнозирование Модуль упругости при растяжении, ГПа</title>
+    <style>
+        form {
+            margin: auto;
+            width: 35%;
+        }
+        .result {
+            margin: auto;
+            width: 35%;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <form action="{{ url_for('main') }}" method='POST'>
+        <fieldset>
+            <legend>Введите значения</legend>
+            Соотношение матрица-наполнитель: <input name="matrix_filler_ratio" type="number" step="any" required><br><br>
+            Плотность, кг/м3: <input name="density" type="number" step="any" required><br><br>
+            модуль упругости, ГПа: <input name="elasticity_modulus" type="number" step="any" required><br><br>
+            Количество отвердителя, м.%: <input name="hardener_content" type="number" step="any" required><br><br>
+            Содержание эпоксидных групп,%_2: <input name="epoxy_group_content" type="number" step="any" required><br><br>
+            Температура вспышки, С_2: <input name="flash_point" type="number" step="any" required><br><br>
+            Поверхностная плотность, г/м2: <input name="surface_density" type="number" step="any" required><br><br>
+            Прочность при растяжении, МПа: <input name="tensile_strength" type="number" step="any" required><br><br>
+            Потребление смолы, г/м2: <input name="resin_consumption" type="number" step="any" required><br><br>
+            Угол нашивки, град: <input name="stitching_angle" type="number" step="any" required><br><br>
+            Шаг нашивки: <input name="stitch_step" type="number" step="any" required><br><br>
+            Плотность нашивки: <input name="stitch_density" type="number" step="any" required><br><br>
+            <input type="submit"> 
+        </fieldset>
+    </form>
+
+    <div class="result" align="center">
+        {% if result %}
+            <br>
+            <p style="font-size: 50px">
+            Ваша прогнозная оценка
+            </p>
+            <p style="font-size: 50px"> {{ result }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+
